@@ -1,6 +1,4 @@
-/* ==========================================================================
-   MY BOOKINGS PAGE
-   ========================================================================== */
+
 document.addEventListener('DOMContentLoaded', () => {
   renderNavbar('bookings');
   renderFooter();

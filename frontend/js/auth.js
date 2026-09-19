@@ -1,13 +1,9 @@
-/* ==========================================================================
-   AUTH — Login & Register handlers
-   ========================================================================== */
 
-// Redirect already-logged-in users away from auth pages
 if (isLoggedIn() && (window.location.pathname.includes('login') || window.location.pathname.includes('register'))) {
   window.location.href = 'index.html';
 }
 
-// Role toggle visual state (register page only)
+
 document.addEventListener('DOMContentLoaded', () => {
   const roleRadios = document.querySelectorAll('input[name="role"]');
   roleRadios.forEach((radio) => {
@@ -28,7 +24,7 @@ function hideFormError() {
   document.getElementById('formError').classList.remove('show');
 }
 
-// ---- REGISTER ----
+
 const registerForm = document.getElementById('registerForm');
 if (registerForm) {
   registerForm.addEventListener('submit', async (e) => {
@@ -58,7 +54,7 @@ if (registerForm) {
   });
 }
 
-// ---- LOGIN ----
+
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
   loginForm.addEventListener('submit', async (e) => {

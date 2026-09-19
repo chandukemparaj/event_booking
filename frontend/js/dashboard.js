@@ -1,6 +1,4 @@
-/* ==========================================================================
-   ORGANIZER DASHBOARD — Module 2 (CRUD) + Module 4 (Analytics)
-   ========================================================================== */
+
 let myEvents = [];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadMyEvents();
 });
 
-/* ---------- TABS ---------- */
+
 function setupTabs() {
   const links = document.querySelectorAll('.sidebar a[data-tab]');
   links.forEach((link) => {
@@ -37,7 +35,7 @@ function setupTabs() {
   document.getElementById('newEventBtn').addEventListener('click', () => openModal());
 }
 
-/* ---------- STATS (Module 4) ---------- */
+
 async function loadStats() {
   try {
     const { stats } = await api.get('/dashboard/stats');
@@ -79,7 +77,7 @@ async function loadStats() {
   }
 }
 
-/* ---------- MY EVENTS (Module 2) ---------- */
+
 async function loadMyEvents() {
   const tbody = document.getElementById('myEventsTableBody');
   try {
@@ -128,7 +126,7 @@ async function deleteEvent(id) {
   }
 }
 
-/* ---------- CREATE / EDIT MODAL ---------- */
+
 function setupModal() {
   document.getElementById('modalClose').addEventListener('click', closeModal);
   document.getElementById('eventModal').addEventListener('click', (e) => {

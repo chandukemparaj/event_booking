@@ -1,7 +1,7 @@
 
 const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:5050/api'
-  : 'https://event-booking-93qy.onrender.com'; 
+  : 'https://event-booking-93qy.onrender.com/api'; 
 
 
 async function apiRequest(endpoint, options = {}) {

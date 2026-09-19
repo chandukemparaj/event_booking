@@ -1,6 +1,4 @@
-/* ==========================================================================
-   NAVBAR — injected on every page via #navbar-mount
-   ========================================================================== */
+
 function renderNavbar(activePage = '') {
   const mount = document.getElementById('navbar-mount');
   if (!mount) return;
@@ -73,9 +71,7 @@ function renderNavbar(activePage = '') {
   }
 }
 
-/* ==========================================================================
-   FOOTER — injected via #footer-mount
-   ========================================================================== */
+
 function renderFooter() {
   const mount = document.getElementById('footer-mount');
   if (!mount) return;

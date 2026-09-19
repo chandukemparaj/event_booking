@@ -1,6 +1,4 @@
-/* ==========================================================================
-   HOME PAGE — Featured event card + category sections
-   ========================================================================== */
+
 document.addEventListener('DOMContentLoaded', () => {
   renderNavbar('home');
   renderFooter();

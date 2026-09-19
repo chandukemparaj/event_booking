@@ -1,6 +1,4 @@
-/* ==========================================================================
-   EVENTS BROWSE PAGE
-   ========================================================================== */
+
 const CATEGORIES = ['All', 'Music', 'Tech', 'Sports', 'Workshop', 'Conference', 'Comedy', 'Other'];
 let activeCategory = 'All';
 let activeSearch = '';
