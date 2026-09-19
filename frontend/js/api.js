@@ -1,14 +1,9 @@
-/* ==========================================================================
-   API CONFIG
-   Change API_BASE_URL to your deployed backend URL after deployment.
-   ========================================================================== */
+
 const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:5050/api'
-  : 'https://YOUR-BACKEND-URL.onrender.com/api'; // <-- replace after deploying backend
+  : 'https://event-booking-93qy.onrender.com'; 
 
-/**
- * Generic fetch wrapper that attaches the JWT token and handles errors.
- */
+
 async function apiRequest(endpoint, options = {}) {
   const token = localStorage.getItem('token');
 
@@ -46,9 +41,7 @@ const api = {
   delete: (endpoint) => apiRequest(endpoint, { method: 'DELETE' })
 };
 
-/* ==========================================================================
-   AUTH HELPERS
-   ========================================================================== */
+
 function getCurrentUser() {
   const user = localStorage.getItem('user');
   return user ? JSON.parse(user) : null;
@@ -77,9 +70,7 @@ function requireRole(...roles) {
   }
 }
 
-/* ==========================================================================
-   TOAST NOTIFICATIONS
-   ========================================================================== */
+
 function showToast(message, type = 'info') {
   let container = document.querySelector('.toast-container');
   if (!container) {
@@ -96,9 +87,8 @@ function showToast(message, type = 'info') {
   setTimeout(() => toast.remove(), 3500);
 }
 
-/* ==========================================================================
-   FORMATTERS
-   ========================================================================== */
+
+   
 function formatDate(dateStr) {
   const date = new Date(dateStr);
   return date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
