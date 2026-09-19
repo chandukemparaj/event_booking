@@ -54,3 +54,20 @@ async function loadEvents() {
     console.error(error);
   }
 }
+function eventCardHTML(event) {
+  const pct = Math.min(100, Math.round((event.bookedSeats / event.totalSeats) * 100));
+  return `
+    <a href="event-detail.html?id=${event._id}" class="event-card">
+      <img src="${event.banner}" alt="${event.title}" class="event-card-img" loading="lazy">
+      <div class="event-card-body">
+        <span class="event-card-cat">${event.category}</span>
+        <div class="event-card-title">${event.title}</div>
+        <div class="event-card-meta">
+          <span>${formatDate(event.date)}</span>
+          <span class="event-card-price">${formatCurrency(event.price)}</span>
+        </div>
+        <div class="seats-bar"><div class="seats-bar-fill" style="width:${pct}%"></div></div>
+      </div>
+    </a>
+  `;
+}
