@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Bookings — EventIQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar-mount"></div>
+
+<div class="page-header">
+  <h1 class="page-title">My Bookings</h1>
+  <p class="page-subtitle">Your booking history and upcoming tickets</p>
+</div>
+
+<div style="padding: 0 40px 60px;">
+  <div class="table-card">
+    <div class="table-card-header"><h3>All Bookings</h3></div>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Booking Code</th>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Seats</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="bookingsTableBody">
+          <tr><td colspan="7" class="loader">Loading bookings…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="footer-mount"></div>
+
+<script src="js/api.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/my-bookings.js"></script>
+</body>
+</html>

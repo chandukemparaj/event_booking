@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organizer Studio — EventIQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar-mount"></div>
+
+<div class="stepper">
+  <div class="stepper-item complete"><span class="stepper-dot"></span>Event Creation</div>
+  <div class="stepper-sep"></div>
+  <div class="stepper-item active"><span class="stepper-dot"></span>Dashboard &amp; Reports</div>
+</div>
+
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <a href="#" class="active" data-tab="overview">📊 Dashboard &amp; Reports</a>
+    <a href="#" data-tab="events">🎫 Event Management</a>
+    <a href="#" id="createEventLink">➕ Create Event</a>
+  </aside>
+
+  <main class="dashboard-main">
+    <div class="page-header" style="padding:0 0 20px;">
+      <h1 class="page-title" id="dashboardTitle">Dashboard &amp; Reports</h1>
+      <p class="page-subtitle">Booking analytics and event management for organizers</p>
+    </div>
+
+    <!-- Overview tab -->
+    <div id="overviewTab">
+      <div class="stats-grid" id="statsGrid">
+        <div class="loader">Loading stats…</div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-card-header"><h3>Performance by Event</h3></div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr><th>Event</th><th>Seats Booked</th><th>Capacity</th><th>Revenue</th></tr>
+            </thead>
+            <tbody id="perfTableBody">
+              <tr><td colspan="4" class="loader">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- My events tab -->
+    <div id="eventsTab" class="hidden">
+      <div class="table-card">
+        <div class="table-card-header">
+          <h3>My Events</h3>
+          <button class="btn-solid" id="newEventBtn">➕ New Event</button>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr><th>Title</th><th>Category</th><th>Date</th><th>Seats</th><th>Price</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="myEventsTableBody">
+              <tr><td colspan="6" class="loader">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- CREATE/EDIT EVENT MODAL -->
+<div class="modal-overlay" id="eventModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modalTitle">Create New Event</h3>
+      <button class="modal-close" id="modalClose">×</button>
+    </div>
+    <div class="form-error" id="modalError"></div>
+    <form id="eventForm">
+      <input type="hidden" id="eventId">
+      <div class="form-group">
+        <label>Event Title</label>
+        <input type="text" id="title" placeholder="e.g. Tech Summit 2026" required>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="description" placeholder="Describe your event..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select id="category" required>
+          <option>Music</option><option>Tech</option><option>Sports</option>
+          <option>Workshop</option><option>Conference</option><option>Comedy</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Banner Image URL</label>
+        <input type="text" id="banner" placeholder="https://... (leave blank for default)">
+      </div>
+      <div class="form-group">
+        <label>Venue</label>
+        <input type="text" id="venue" placeholder="e.g. HSR Layout Convention Center" required>
+      </div>
+      <div style="display:flex; gap:12px;">
+        <div class="form-group" style="flex:1;">
+          <label>Date</label>
+          <input type="date" id="date" required>
+        </div>
+        <div class="form-group" style="flex:1;">
+          <label>Time</label>
+          <input type="time" id="time" required>
+        </div>
+      </div>
+      <div style="display:flex; gap:12px;">
+        <div class="form-group" style="flex:1;">
+          <label>Price (₹, 0 = free)</label>
+          <input type="number" id="price" min="0" value="0" required>
+        </div>
+        <div class="form-group" style="flex:1;">
+          <label>Total Seats</label>
+          <input type="number" id="totalSeats" min="1" value="50" required>
+        </div>
+      </div>
+      <button type="submit" class="btn-solid btn-full" id="eventSubmitBtn">Create Event</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

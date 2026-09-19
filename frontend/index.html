@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EventIQ — Discover & Book Events</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar-mount"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-eyebrow">⚡ Event Booking, Reimagined</span>
+      <h1 class="hero-title">Discover events. <span class="accent">Book instantly.</span></h1>
+      <p class="hero-desc">A faster way to find what's happening and lock in your seat — real-time availability, instant confirmation, zero friction.</p>
+      <div class="hero-actions">
+        <a href="events.html" class="btn-highlight">Browse Events</a>
+        <a href="register.html" class="btn-ghost">Create Account</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card" id="heroFeatured">
+        <div class="loader">Loading featured event…</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT LISTING -->
+<main id="railsContainer">
+  <div class="loader">Loading events…</div>
+</main>
+
+<div id="footer-mount"></div>
+
+<script src="js/api.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Confirmed — EventIQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar-mount"></div>
+
+<div class="stepper">
+  <div class="stepper-item complete"><span class="stepper-dot"></span>Event Listing</div>
+  <div class="stepper-sep"></div>
+  <div class="stepper-item complete"><span class="stepper-dot"></span>Ticket Booking</div>
+  <div class="stepper-sep"></div>
+  <div class="stepper-item active"><span class="stepper-dot"></span>Booking Confirmation</div>
+</div>
+
+<div class="confirmation-wrapper">
+  <div class="confirmation-card" id="confirmationCard">
+    <div class="loader">Loading confirmation…</div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/navbar.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  renderNavbar();
+  requireAuth();
+
+  const id = new URLSearchParams(window.location.search).get('id');
+  const card = document.getElementById('confirmationCard');
+
+  try {
+    const { booking } = await api.get(`/bookings/${id}`);
+    card.innerHTML = `
+      <div class="confirmation-icon">✓</div>
+      <h2 style="font-family:var(--font-display);font-size:22px;margin-bottom:6px;">Booking Confirmed!</h2>
+      <p style="color:var(--text-muted);font-size:14px;">Your tickets for <strong>${booking.event.title}</strong> are booked.</p>
+      <div class="confirmation-code">${booking.bookingCode}</div>
+      <div class="confirmation-details">
+        <div class="row"><span>Event</span><span>${booking.event.title}</span></div>
+        <div class="row"><span>Date</span><span>${formatDate(booking.event.date)} · ${booking.event.time}</span></div>
+        <div class="row"><span>Venue</span><span>${booking.event.venue}</span></div>
+        <div class="row"><span>Seats Booked</span><span>${booking.seats}</span></div>
+        <div class="row"><span>Total Paid</span><span>${formatCurrency(booking.totalAmount)}</span></div>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <a href="my-bookings.html" class="btn-solid btn-full">View My Bookings</a>
+        <a href="events.html" class="btn-ghost btn-full">Browse More</a>
+      </div>
+    `;
+  } catch (error) {
+    card.innerHTML = `<div class="empty-state">Booking not found.</div>`;
+  }
+});
+</script>
+</body>
+</html>
